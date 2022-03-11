@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../../context/auth.context";
 
-function SignupPage() {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -17,15 +20,18 @@ function SignupPage() {
     const body = { username, password };
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/signup`, body)
+      .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
       .then((response) => {
-        navigate("/login");
+        console.log("res.data", response.data);
+        storeToken(response.data.authToken);
+        authenticateUser();
+        navigate("/home");
       })
       .catch((err) => console.log(err));
   };
   return (
     <div>
-      <h1>Signup</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -43,10 +49,10 @@ function SignupPage() {
           onChange={handlePassword}
         />
 
-        <button type="submit"> Signup</button>
+        <button type="submit"> Login</button>
       </form>
     </div>
   );
 }
 
-export default SignupPage;
+export default LoginPage;

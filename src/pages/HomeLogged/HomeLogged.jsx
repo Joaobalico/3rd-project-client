@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const HomeLogged = () => {
-  return (
-    <div>HomeLogged</div>
-  )
-}
+  return <div>Welcome, (username) </div>;
+};
 
-export default HomeLogged
+export default HomeLogged;
