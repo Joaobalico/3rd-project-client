@@ -26,6 +26,7 @@ code {
   background-color: #252526;
 }
 
+.light span,
 .light a,
 .light p,
 .light h1,
@@ -33,6 +34,7 @@ code {
   color: #000000;
 }
 
+.dark span,
 .dark a,
 .dark p,
 .dark h1,

@@ -11,7 +11,7 @@ function Navbar() {
       <Link to="/"> Home </Link>
       {loggedIn && (
         <>
-          {user.username}
+          <span>{user.username}</span>
           <button onClick={logoutUser}>Logout</button>
         </>
       )}
