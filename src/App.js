@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import HomeLogged from "./pages/HomeLogged/HomeLogged";
+import NewEvent from "./pages/NewEvent/NewEvent";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           }
         />
         <Route />
+        <Route path="/new-event" element={<NewEvent />} />
       </Routes>
     </div>
   );

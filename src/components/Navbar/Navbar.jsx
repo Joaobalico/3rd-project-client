@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../../context/theme.context";
 import { AuthContext } from "../../context/auth.context";
 
@@ -8,22 +8,39 @@ function Navbar() {
   const { loggedIn, user, logoutUser } = useContext(AuthContext);
   return (
     <nav className={"Navbar " + theme}>
-      <Link to="/"> Home </Link>
+      <NavLink to="/">
+        <button style={{ cursor: "pointer" }}>Home</button>
+      </NavLink>
       {loggedIn && (
         <>
-          <span>{user.username}</span>
-          <button onClick={logoutUser}>Logout</button>
+          <NavLink to={`/new-event`}>
+            <button style={{ cursor: "pointer" }}>Add New Event</button>
+          </NavLink>
+          <NavLink to={"/profile"}>
+            <span style={{ fontSize: "20px" }}>
+              <b>
+                <u>{user.username}</u>
+              </b>
+            </span>
+          </NavLink>
+          <button onClick={logoutUser} style={{ cursor: "pointer" }}>
+            Logout
+          </button>
         </>
       )}
 
       {!loggedIn && (
         <>
-          <Link to="/signup"> Signup</Link>
-          <Link to="/login"> Login</Link>
+          <NavLink to="/signup">
+            <button style={{ cursor: "pointer" }}>Signup</button>
+          </NavLink>
+          <NavLink to="/login">
+            <button style={{ cursor: "pointer" }}>Login</button>
+          </NavLink>
         </>
       )}
 
-      <button onClick={toggleTheme}>
+      <button onClick={toggleTheme} style={{ cursor: "pointer" }}>
         Change to {theme === "light" ? "dark" : "light"}{" "}
       </button>
     </nav>
