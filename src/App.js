@@ -52,7 +52,7 @@ function App() {
         />
         <Route />
         <Route path="/new-event" element={<NewEvent />} />
-        <Route path={"/events-to-attend/:eventId"} element={<EventsToAttend />} />
+        <Route path={"/events-to-attend"} element={<EventsToAttend />} />
         <Route path="/event/:eventId" element={<EventDetails />} />
       </Routes>
     </div>
