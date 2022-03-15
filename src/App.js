@@ -8,6 +8,8 @@ import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import HomeLogged from "./pages/HomeLogged/HomeLogged";
 import NewEvent from "./pages/NewEvent/NewEvent";
+import EventDetails from "./pages/EventDetails/EventDetails";
+import EventsToAttend from "./pages/EventsToAttend/EventsToAttend";
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
         />
         <Route />
         <Route path="/new-event" element={<NewEvent />} />
+        <Route path={"/events-to-attend/:eventId"} element={<EventsToAttend />} />
+        <Route path="/event/:eventId" element={<EventDetails />} />
       </Routes>
     </div>
   );

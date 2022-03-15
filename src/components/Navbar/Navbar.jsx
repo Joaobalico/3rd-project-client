@@ -16,6 +16,9 @@ function Navbar() {
           <NavLink to={`/new-event`}>
             <button style={{ cursor: "pointer" }}>Add New Event</button>
           </NavLink>
+          <NavLink to={`/events-to-attend`}>
+            <button style={{ cursor: "pointer" }}>Events to Attend</button>
+          </NavLink>
           <NavLink to={"/profile"}>
             <span style={{ fontSize: "20px" }}>
               <b>
