@@ -7,10 +7,15 @@ const HomeLogged = () => {
   const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
 
+  const storedToken = localStorage.getItem('authToken');
+
   const fetchUser = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`);
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
       console.log(response.data);
+      console.log(user);
       setEvents(response.data);
     } catch (error) {
       console.log(error);

@@ -8,6 +8,9 @@ const NewEvent = () => {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
 
+  const storedToken = localStorage.getItem('authToken');
+
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -16,7 +19,9 @@ const NewEvent = () => {
     const body = { title, image, address, description };
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/event`, body)
+      .post(`${process.env.REACT_APP_API_URL}/event`, body, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         setTitle("");
         setImage("");
@@ -32,7 +37,7 @@ const NewEvent = () => {
       <h1>Add New Event</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="title">Meetup Title</label>
+          <label htmlFor="title">Event Title</label>
           <input
             type="text"
             required
@@ -42,7 +47,7 @@ const NewEvent = () => {
           />
         </div>
         <div>
-          <label htmlFor="image">Meetup image</label>
+          <label htmlFor="image">Event image</label>
           <input
             type="url"
             required
@@ -52,7 +57,7 @@ const NewEvent = () => {
           />
         </div>
         <div>
-          <label htmlFor="address">Meetup address</label>
+          <label htmlFor="address">Event address</label>
           <input
             type="text"
             required
@@ -62,7 +67,7 @@ const NewEvent = () => {
           />
         </div>
         <div>
-          <label htmlFor="description">Meetup description</label>
+          <label htmlFor="description">Event description</label>
           <textarea
             id="description"
             required
@@ -72,7 +77,7 @@ const NewEvent = () => {
           ></textarea>
         </div>
         <div>
-          <button>Add Meetup</button>
+          <button>Add Event</button>
         </div>
       </form>
     </div>

@@ -7,12 +7,17 @@ const EventsToAttend = () => {
   const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
 
+  const storedToken = localStorage.getItem('authToken');
+
   const fetchUser = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`);
-      console.log(response);
-      console.log(user)
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      // console.log(response.data);
+      // console.log(user);
       // setEvents(response.data);
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -24,27 +29,19 @@ const EventsToAttend = () => {
 
   return (
     <>
-     {/*  <h1>Welcome, {user.username} 👋</h1>
-      <h2>
-        <i>All Events:</i>
-        {console.log(user)}
-      </h2>
-      <>
-        {events.map((event) => {
+      <h1>
+        <i>Events to Attend</i>
+      </h1>
+       <>
+        {user.events.map((event) => {
           return (
             <div key={event._id}>
-              <Link to={`/event/${event._id}`} style={{ color: "black" }}>
-                <h3>{event.title}</h3>
-              </Link>
-              <img
-                src={event.image}
-                alt={event.title}
-                style={{ maxWidth: "400px" }}
-              />
+              <h3>{event.title}</h3>
+              <img src={event.image} alt={event.title} />
             </div>
           );
         })}
-      </> */}
+      </>
     </>
   );
 };

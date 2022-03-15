@@ -10,10 +10,12 @@ import HomeLogged from "./pages/HomeLogged/HomeLogged";
 import NewEvent from "./pages/NewEvent/NewEvent";
 import EventDetails from "./pages/EventDetails/EventDetails";
 import EventsToAttend from "./pages/EventsToAttend/EventsToAttend";
+import Profile from "./pages/Profile/Profile";
+import EditEvent from "./pages/EditEvent/EditEvent";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <Navbar />
 
       <Routes>
@@ -52,7 +54,8 @@ function App() {
         />
         <Route />
         <Route path="/new-event" element={<NewEvent />} />
-        <Route path={"/events-to-attend"} element={<EventsToAttend />} />
+        <Route path={"/profile"} element={<Profile />} />
+        <Route path={"/edit-event/:eventId"} element={<EditEvent />} />
         <Route path="/event/:eventId" element={<EventDetails />} />
       </Routes>
     </div>
