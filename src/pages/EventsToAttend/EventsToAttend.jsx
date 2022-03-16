@@ -7,17 +7,13 @@ const EventsToAttend = () => {
   const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
 
-  const storedToken = localStorage.getItem('authToken');
-
   const fetchUser = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-      // console.log(response.data);
-      // console.log(user);
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`);
+      console.log(response.data);
+      console.log(user);
       // setEvents(response.data);
-      return response.data;
+      // return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +36,7 @@ const EventsToAttend = () => {
               <img src={event.image} alt={event.title} />
             </div>
           );
-        })}
+        })} 
       </>
     </>
   );

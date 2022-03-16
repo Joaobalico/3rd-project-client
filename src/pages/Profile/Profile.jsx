@@ -11,9 +11,13 @@ const Profile = () => {
 
   const { user } = useContext(AuthContext);
 
+  const storedToken = localStorage.getItem('authToken');
+
   const deleteUser = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/profile`)
+      .delete(`${process.env.REACT_APP_API_URL}/profile`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => navigate("/"));
   };
 
