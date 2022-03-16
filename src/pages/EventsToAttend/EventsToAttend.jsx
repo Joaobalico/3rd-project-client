@@ -1,27 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../../context/auth.context";
+import React from "react";
 
-const EventsToAttend = (props) => {
-  const { user } = useContext(AuthContext);
-  // const [events, setEvents] = useState(props.events);
-  console.log(props)
+const EventsToAttend = ({ events }) => {
+  console.log("events in component", events);
 
   return (
     <>
       <h1>
         <i>Events to Attend</i>
       </h1>
-       <>
-        {props.events.map((event) => {
+      <>
+        {events.map((event) => {
           return (
             <div key={event._id}>
               <h3>{event.title}</h3>
-              <img src={event.image} alt={event.title} />
+              <img src={event.image} alt={event.title} style={{ maxWidth: "400px" }}/>
             </div>
           );
-        })} 
+        })}
       </>
     </>
   );
