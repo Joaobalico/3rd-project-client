@@ -1,8 +1,7 @@
-import { AuthContext } from "../../context/auth.context";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import EventsToAttend from "../EventsToAttend/EventsToAttend";
 import axios from "axios"
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {

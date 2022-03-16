@@ -9,7 +9,6 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import HomeLogged from "./pages/HomeLogged/HomeLogged";
 import NewEvent from "./pages/NewEvent/NewEvent";
 import EventDetails from "./pages/EventDetails/EventDetails";
-import EventsToAttend from "./pages/EventsToAttend/EventsToAttend";
 import Profile from "./pages/Profile/Profile";
 import EditEvent from "./pages/EditEvent/EditEvent";
 
