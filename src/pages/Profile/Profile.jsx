@@ -7,6 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [events, setEvents] = useState([])
 
 
   const { user } = useContext(AuthContext);
@@ -21,14 +22,22 @@ const Profile = () => {
       .then(() => navigate("/"));
   };
 
+  useEffect(() => {
+    setEvents(user.events);
+  }, []);
+
   return (
     <>
+    {user && (
+      <>
       <h1>
         <u>{user.username}</u>
       </h1>
       <button>Change Username</button>
-      <EventsToAttend />
+      <EventsToAttend events={events}/>
       <button onClick={deleteUser}> Delete Event</button>
+      </>
+      )}
     </>
   );
 };

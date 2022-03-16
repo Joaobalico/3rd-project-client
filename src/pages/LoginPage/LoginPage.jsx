@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../../context/auth.context";
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { AuthContext } from '../../context/auth.context';
 
 function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -22,10 +22,10 @@ function LoginPage() {
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
       .then((response) => {
-        console.log("res.data", response.data);
+        console.log('res.data', response.data);
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/home");
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };
@@ -34,20 +34,10 @@ function LoginPage() {
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsername}
-        />
+        <input type="text" name="username" value={username} onChange={handleUsername} />
 
         <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+        <input type="password" name="password" value={password} onChange={handlePassword} />
 
         <button type="submit"> Login</button>
       </form>

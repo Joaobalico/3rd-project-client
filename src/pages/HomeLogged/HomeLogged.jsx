@@ -9,7 +9,7 @@ const HomeLogged = () => {
 
   const storedToken = localStorage.getItem('authToken');
 
-  const fetchUser = async () => {
+  const fetchEvents = async () => {
     try {
       let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -23,7 +23,7 @@ const HomeLogged = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    fetchEvents();
   }, []);
 
   return (
