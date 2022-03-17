@@ -11,8 +11,8 @@ const EventsToAttend = ({ events }) => {
       <>
         {events.map((event) => {
           return (
-            <div key={event._id}>
-              <h3>{event.title}</h3>
+            <div key={event._id} className="card" style={{ margin:"1rem"}}>
+              <h3 className="card-title">{event.title}</h3>
               <img src={event.image} alt={event.title} style={{ maxWidth: "400px" }}/>
             </div>
           );

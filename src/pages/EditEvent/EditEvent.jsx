@@ -95,9 +95,9 @@ function EditEvent() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Edit Event</button>
+        <button className="btn btn-primary" type="submit">Edit Event</button>
       </form>
-      <button onClick={deleteEvent}> Delete Event</button>
+      <button className="btn btn-danger" onClick={deleteEvent}> Delete Event</button>
     </div>
   );
 }

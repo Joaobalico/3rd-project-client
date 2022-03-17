@@ -4,26 +4,11 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #dfdfdf;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.light {
-  background-color: #efeded;
-}
-
-.dark {
-  background-color: #18191a;
-}
-
-.Navbar.light {
-  background-color: #ffffff;
-}
-
-.Navbar.dark {
-  background-color: #252526;
 }
 
 .light span,

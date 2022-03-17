@@ -53,34 +53,37 @@ const EventDetails = () => {
   return (
     <>
       {event && (
-        <>
+        <div className="card" style={{ width: "18.5rem", marginTop: "3rem" }}>
           <img
+            className="card-img-top"
             src={event.image}
             alt={event.title}
-            style={{ maxWidth: "300px", marginTop: "10px" }}
+            style={{ maxWidth: "300px" }}
           />
-          <div>
-            <h1>{event.title}</h1>
-            <form onSubmit={handleSubmit}>
-              <button type="submit" style={{ cursor: "pointer" }}>
-                Attend
-              </button>
-            </form>
+          <div className="card-body">
+            <div>
+              <h1 className="card-title"><b>{event.title}</b></h1>
+              <form onSubmit={handleSubmit}>
+                <button className="btn btn-success"type="submit" style={{ cursor: "pointer" }}>
+                  Attend
+                </button>
+              </form>
+            </div>
+            <div>
+              <h3>About the Event:</h3>
+              <p>{event.description}</p>
+            </div>
+            <div>
+              <h3>Address:</h3>
+              <p>
+                <i>{event.address}</i>
+              </p>
+            </div>
+            <Link to={`/edit-event/${eventId}`}>
+              <button className="btn btn-primary">Change Details</button>
+            </Link>
           </div>
-          <div>
-            <h3>About the Event:</h3>
-            <p>{event.description}</p>
-          </div>
-          <div>
-            <h3>Address:</h3>
-            <p>
-              <i>{event.address}</i>
-            </p>
-          </div>
-          <Link to={`/edit-event/${eventId}`}>
-            <button>Change Details</button>
-          </Link>
-        </>
+        </div>
       )}
     </>
   );

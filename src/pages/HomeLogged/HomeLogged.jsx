@@ -7,13 +7,16 @@ const HomeLogged = () => {
   const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
 
-  const storedToken = localStorage.getItem('authToken');
+  const storedToken = localStorage.getItem("authToken");
 
   const fetchEvents = async () => {
     try {
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
+      let response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/events`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      );
       console.log(response.data);
       console.log(user);
       setEvents(response.data);
@@ -35,15 +38,18 @@ const HomeLogged = () => {
       <>
         {events.map((event) => {
           return (
-            <div key={event._id}>
-              <Link to={`/event/${event._id}`} style={{ color: "black" }}>
-                <h3>{event.title}</h3>
-              </Link>
-              <img
-                src={event.image}
-                alt={event.title}
-                style={{ maxWidth: "400px" }}
-              />
+            <div key={event._id} className="card" style={{margin:"1rem"}}>
+              <div className="card-body">
+                <Link to={`/event/${event._id}`} style={{ color: "black" }}>
+                  <h3 class="card-title">{event.title}</h3>
+                </Link>
+                <img
+                  className="card-img-bottom"
+                  src={event.image}
+                  alt={event.title}
+                  style={{ maxWidth: "400px" }}
+                />
+              </div>
             </div>
           );
         })}
