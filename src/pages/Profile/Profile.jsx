@@ -44,7 +44,6 @@ const Profile = () => {
           <div>
             <EventsToAttend events={user.events} />
           </div>
-          <button onClick={deleteUser}> Delete Event</button>
         </>
       )}
     </>
