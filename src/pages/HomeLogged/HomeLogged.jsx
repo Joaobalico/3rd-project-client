@@ -35,13 +35,13 @@ const HomeLogged = () => {
       <h2>
         <i>All Events:</i>
       </h2>
-      <>
+      <div className="list" style={{display: 'flex', flexWrap:"wrap"}}>
         {events.map((event) => {
           return (
             <div key={event._id} className="card" style={{margin:"1rem"}}>
               <div className="card-body">
                 <Link to={`/event/${event._id}`} style={{ color: "black" }}>
-                  <h3 class="card-title">{event.title}</h3>
+                  <h3 className="card-title">{event.title}</h3>
                 </Link>
                 <img
                   className="card-img-bottom"
@@ -53,7 +53,7 @@ const HomeLogged = () => {
             </div>
           );
         })}
-      </>
+      </div>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 function EditEvent() {
   const [title, setTitle] = useState("");
@@ -8,7 +8,7 @@ function EditEvent() {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
 
-  const storedToken = localStorage.getItem('authToken');
+  const storedToken = localStorage.getItem("authToken");
 
   const { eventId } = useParams();
 
@@ -23,11 +23,12 @@ function EditEvent() {
   const fetchEvent = async () => {
     try {
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/event/${eventId}`, {
-            headers: { Authorization: `Bearer ${storedToken}` },
-          }
+        `${process.env.REACT_APP_API_URL}/event/${eventId}`,
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
       );
-      let { title, description } = response.data;
+      let { title, image, address, description } = response.data;
       setTitle(title);
       setImage(image);
       setAddress(address);
@@ -47,7 +48,9 @@ function EditEvent() {
     const body = { title, image, address, description };
 
     axios
-      .put(`${process.env.REACT_APP_API_URL}/event/${eventId}`, body)
+      .put(`${process.env.REACT_APP_API_URL}/event/${eventId}`, body, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setTitle("");
         setImage("");
@@ -59,45 +62,75 @@ function EditEvent() {
   };
 
   return (
-    <div>
-      <h3>Edit Event</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+    <div className="card" style={{ width: "20rem", marginTop: "1rem" }}>
+      <div className="card-body">
+        <h2 className="card-title">Edit Event</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="title">
+            <b>Title</b>
+          </label>
+          <br />
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <br />
 
-        <label htmlFor="image">Image</label>
-        <input
-          type="url"
-          required
-          id="image"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
+          <label htmlFor="image">
+            {" "}
+            <b>Image</b>{" "}
+          </label>
+          <br />
+          <input
+            type="url"
+            required
+            id="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+          <br />
 
-        <label htmlFor="address">Event Address</label>
-        <input
-          type="text"
-          required
-          id="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+          <label htmlFor="address">
+            {" "}
+            <b>Event Address</b>{" "}
+          </label>
+          <br />
+          <input
+            type="text"
+            required
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+          <br />
 
-        <label htmlFor="description">Description</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button className="btn btn-primary" type="submit">Edit Event</button>
-      </form>
-      <button className="btn btn-danger" onClick={deleteEvent}> Delete Event</button>
+          <label htmlFor="description">
+            <b>Description</b>
+          </label>
+          <br />
+          <textarea
+            type="text"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            rows="5"
+          />
+          <br />
+
+            <button
+              className="btn btn-success"
+              type="submit"
+              style={{ margin: "0.5rem 0" }}
+            >
+              Edit Event
+            </button>
+        </form>
+        <button className="btn btn-danger" onClick={deleteEvent}>
+          Delete Event
+        </button>
+      </div>
     </div>
   );
 }

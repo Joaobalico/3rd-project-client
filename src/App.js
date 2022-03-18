@@ -14,7 +14,10 @@ import EditEvent from "./pages/EditEvent/EditEvent";
 
 function App() {
   return (
-    <div className="App" style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div
+      className="App"
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <Navbar />
 
       <Routes>
