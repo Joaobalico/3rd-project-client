@@ -5,8 +5,8 @@ const HomePage = () => {
   return (
     <main>
       <section>
-      <h1>Homepage</h1>
-        <img src="" alt="" />
+        <h1></h1>
+        <img src="https://secure.meetupstatic.com/next/images/shared/online_events.svg?w=1080" alt="" />
         <h1></h1>
         <p></p>
       </section>
@@ -25,7 +25,9 @@ const HomePage = () => {
         </div>
       </section>
       <div>
-        <button><Link to={"/signup"}>Signup</Link></button>
+        <Link to={"/signup"}>
+          <button className="btn btn-success">Signup</button>
+        </Link>
       </div>
     </main>
   );

@@ -1,28 +1,10 @@
 import React, { useContext } from "react";
 
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { ThemeContext } from "../../context/theme.context";
 
 import { AuthContext } from "../../context/auth.context";
-
-import { Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <Link to={"/profile"}>
-        Profile
-      </Link>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <Link to={"/"}>
-        2nd menu item
-      </Link>
-    </Menu.Item>
-  </Menu>
-);
 
 function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -32,7 +14,7 @@ function Navbar() {
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
-      style={{ backgroundColor: "#77002e", width: "100vw" }}
+      style={{ backgroundColor: "#a234c6", width: "100vw" }}
     >
       <button
         className="navbar-toggler"
@@ -48,7 +30,10 @@ function Navbar() {
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <li className="nav-item active">
+          <li
+            className="nav-item active"
+            style={{ display: "flex", marginRight: "0.5rem" }}
+          >
             <NavLink to={"/"} className="nav-link">
               Home <span className="sr-only">(current)</span>
             </NavLink>
@@ -56,42 +41,32 @@ function Navbar() {
 
           {loggedIn && (
             <>
-              <Dropdown overlay={menu}>
-                <Link
-                  to={"/"}
-                  className="ant-dropdown-link"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Joao <DownOutlined />
-                </Link>
-              </Dropdown>
-              <li className="nav-item">
+              <li className="nav-item active">
                 <NavLink to={`/new-event`} className="nav-link">
                   Add Event
                 </NavLink>
               </li>
+
               <li className="nav-item dropdown">
-                <NavLink
-                  to={"/profile"}
-                  className="btn btn-primary dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  {user.username}
+                <NavLink to={"/profile"}>
+                  <button
+                    className="btn btn-primary"
+                    style={{ marginRight: "1rem" }}
+                  >
+                    Profile
+                  </button>
                 </NavLink>
 
                 <div
                   className="dropdown-menu"
-                  aria-labelledby="DropdownMenuButton"
+                  aria-labelledby="navbarDropdownMenuLink"
                 >
                   <NavLink className="dropdown-item" to={"/profile"}>
                     Profile
                   </NavLink>
                 </div>
               </li>
+
               <li className="nav-item">
                 <button
                   onClick={logoutUser}
@@ -107,11 +82,21 @@ function Navbar() {
           {!loggedIn && (
             <>
               <NavLink to="/signup">
-                <button style={{ cursor: "pointer" }}>Signup</button>
+                <button
+                  style={{ cursor: "pointer", marginRight: "1rem" }}
+                  className="btn btn-success"
+                >
+                  Signup
+                </button>
               </NavLink>
 
               <NavLink to="/login">
-                <button style={{ cursor: "pointer" }}>Login</button>
+                <button
+                  style={{ cursor: "pointer" }}
+                  className="btn btn-primary"
+                >
+                  Login
+                </button>
               </NavLink>
             </>
           )}
