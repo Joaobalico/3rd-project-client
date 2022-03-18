@@ -68,13 +68,15 @@ function Navbar() {
               </li>
 
               <li className="nav-item">
-                <button
-                  onClick={logoutUser}
-                  style={{ cursor: "pointer" }}
-                  className="btn btn-danger"
-                >
-                  Logout
-                </button>
+                <NavLink to={"/"}>
+                  <button
+                    onClick={logoutUser}
+                    style={{ cursor: "pointer" }}
+                    className="btn btn-danger"
+                  >
+                    Logout
+                  </button>
+                </NavLink>
               </li>
             </>
           )}
@@ -83,8 +85,12 @@ function Navbar() {
             <>
               <NavLink to="/signup">
                 <button
-                  style={{ cursor: "pointer", marginRight: "1rem" }}
-                  className="btn btn-success"
+                  style={{
+                    cursor: "pointer",
+                    marginRight: "1rem",
+                    backgroundColor: "#008294",
+                  }}
+                  className="btn btn-primary"
                 >
                   Signup
                 </button>
@@ -93,7 +99,7 @@ function Navbar() {
               <NavLink to="/login">
                 <button
                   style={{ cursor: "pointer" }}
-                  className="btn btn-primary"
+                  className="btn btn-success"
                 >
                   Login
                 </button>

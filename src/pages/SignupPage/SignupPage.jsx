@@ -43,7 +43,13 @@ function SignupPage() {
           onChange={handlePassword}
         />
 
-        <button type="submit" className="btn btn-success" style={{margin:"0.5rem"}}> Signup</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ cursor:"pointer", margin: "0.5rem", backgroundColor: "#008294" }}
+        >
+          Signup
+        </button>
       </form>
     </div>
   );
